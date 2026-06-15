@@ -1,0 +1,37 @@
+name: JournalCompanion
+options:
+  bundleIdPrefix: com.hasandag.journalcompanion
+  deploymentTarget:
+    iOS: "26.0"
+  createIntermediateGroups: true
+
+targets:
+  JournalCompanion:
+    type: application
+    platform: iOS
+    sources:
+      - path: Sources/JournalCompanionApp
+    info:
+      path: Sources/JournalCompanionApp/Info.plist
+      properties:
+        UILaunchScreen: {}
+        NSMicrophoneUsageDescription: "Journal Companion uses your microphone to record voice journal entries. Recordings are transcribed on-device and never leave your device."
+        NSSpeechRecognitionUsageDescription: "Journal Companion transcribes your voice journal entries on-device using on-device speech recognition."
+        NSPhotoLibraryUsageDescription: "Journal Companion can look at your recent photos to gently suggest reflections. This is opt-in and processed entirely on-device (Phase 3)."
+    settings:
+      base:
+        SWIFT_VERSION: "6.0"
+        PRODUCT_BUNDLE_IDENTIFIER: com.hasandag.journalcompanion
+        ENABLE_PREVIEWS: YES
+        TARGETED_DEVICE_FAMILY: "1"
+
+  JournalCompanionTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources:
+      - path: Tests/JournalCompanionAppTests
+    settings:
+      base:
+        SWIFT_VERSION: "6.0"
+    dependencies:
+      - target: JournalCompanion
